@@ -1,5 +1,7 @@
 # ILS Venture Progress & Readiness Workflow
 
+**Live demo:** <https://ils-venture-desk.vercel.app/>
+
 Working prototype for the Mesa Idea Lab Sprint (ILS) Tech Associate assignment.
 
 Tracks three anonymised ventures (Case A, B, C), preserves `Unknown` values, separates submitted claims from verified evidence, evaluates 38 requirement rows across four business models, records reviewer decisions with reviewer/timestamp/reason, and keeps level transitions, MSL eligibility, fundraising preference, MSL handover and MSL acceptance as independent state dimensions.
@@ -36,6 +38,8 @@ For a separate frontend development server with an API proxy, keep FastAPI on po
 The local SQLite database is `backend/ils.db` (generated at first run and not tracked in this repository). It is seeded from `backend/seed_data.json` on first start. `Reset to seed data` in the header recreates it. To reseed manually, delete `backend/ils.db` and restart the backend, or call `POST /api/reset`.
 
 ## Vercel demo deployment
+
+Live demo: <https://ils-venture-desk.vercel.app/>
 
 Import this repository at <https://vercel.com/new>. Vercel detects the FastAPI app from `index.py`; use the repository root and leave the build and output settings at their defaults. No frontend build is required because `frontend/dist/` is prebuilt.
 
