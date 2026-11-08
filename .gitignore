@@ -1,0 +1,49 @@
+# Local runtime data
+backend/ils.db
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.verify/
+.venv/
+venv/
+node_modules/
+
+# Release, evidence and demo artifacts
+release/
+verification-evidence/
+demo/
+exports/
+frontend/qa_screenshots/
+frontend/.impeccable/
+
+# Local planning, assignment and submission documents
+*.pdf
+CHANGELOG_CORRECTNESS_FIXES.md
+DEMO_SCRIPT.md
+ILS_Complete_Guide_and_Plan.md
+PLAN.md
+SUBMISSION_NOTE.md
+VITE_FREE_RELEASE_NOTES.md
+skills-lock.json
+
+# Tooling and agent configuration
+.agents/
+.claude/
+
+# Audit reports; keep the runnable audit script
+audit_results/*
+!audit_results/run_extended_audit.py
+
+# Local environment files
+.env
+.env.*
+
+# Design/support folders not required by the deployed app
+design-system/
+

@@ -1,0 +1,12 @@
+{
+  "name": "ils-venture-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dependency-free static frontend build: no Vite or npm registry required",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "dev": "node tools/dev-server.mjs",
+    "start": "node tools/dev-server.mjs",
+    "check": "node tools/build.mjs --check"
+  }
+}

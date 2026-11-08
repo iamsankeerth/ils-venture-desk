@@ -1,0 +1,211 @@
+{
+  "title": "ILS Stage & Evidence QA Scenario Catalog",
+  "source": "Original 3 anonymised venture cases + supplied mock evidence from Mesa assignment",
+  "handling": "Only test on independent temporary seeded DBs; no live messages, external links, contacts or original seed edits",
+  "source_data_evidence_ids": [
+    "A-E01",
+    "B-E01",
+    "B-E02",
+    "B-E03",
+    "C-E01",
+    "C-E02",
+    "C-E03"
+  ],
+  "statuses": {
+    "programme_levels": [
+      "Unknown",
+      "Level 0",
+      "Level 1",
+      "Level 2"
+    ],
+    "review": [
+      "UNREVIEWED",
+      "APPROVED",
+      "CHANGES_REQUESTED"
+    ],
+    "criterion": [
+      "UNKNOWN",
+      "IN_PROGRESS",
+      "MET",
+      "NOT_MET",
+      "BLOCKED"
+    ],
+    "msl": [
+      "Unknown",
+      "Eligible for MSL"
+    ]
+  },
+  "source_only_stage_scenarios": [
+    {
+      "id": "S01",
+      "title": "Baseline seed",
+      "case": "All",
+      "starting_point": "Original A/B/C states and 38 criteria",
+      "action": "No mutation",
+      "expected": "Present original cases and 38 criteria"
+    },
+    {
+      "id": "S02",
+      "title": "Development vs programme level",
+      "case": "A",
+      "starting_point": "MVP Developed; level Unknown",
+      "action": "Read state",
+      "expected": "MVP does not imply Level 0"
+    },
+    {
+      "id": "S03",
+      "title": "Submitted vs verified claim",
+      "case": "A",
+      "starting_point": "A-E01 unreviewed; 32 sign-ups, 12/8 WAU",
+      "action": "Read state",
+      "expected": "No verified demand bar"
+    },
+    {
+      "id": "S04",
+      "title": "Reviewer approval",
+      "case": "A",
+      "starting_point": "Unreviewed A-E01",
+      "action": "Review APPROVED",
+      "expected": "WAU NOT_MET; sign-ups UNKNOWN"
+    },
+    {
+      "id": "S05",
+      "title": "Changes requested",
+      "case": "A",
+      "starting_point": "Unreviewed A-E01",
+      "action": "Review CHANGES_REQUESTED",
+      "expected": "Staff follow-up and audit"
+    },
+    {
+      "id": "S06",
+      "title": "L0 checklist",
+      "case": "A",
+      "starting_point": "No L0 qualitative evidence",
+      "action": "Read criteria",
+      "expected": "Five Unknowns"
+    },
+    {
+      "id": "S07",
+      "title": "Imported eligibility",
+      "case": "B",
+      "starting_point": "Level Unknown; Eligible MSL; grants",
+      "action": "Read state",
+      "expected": "Eligibility preserved; not formal level"
+    },
+    {
+      "id": "S08",
+      "title": "Signed LOI",
+      "case": "B",
+      "starting_point": "B-E01 signed LOI",
+      "action": "Review APPROVED",
+      "expected": "One LOI contribution; no inferred revenue or pilot"
+    },
+    {
+      "id": "S09",
+      "title": "Services invoice and partial receipt",
+      "case": "B",
+      "starting_point": "B-E02/B-E03",
+      "action": "Review both APPROVED",
+      "expected": "₹100k billed / ₹60k collected; ₹40k arithmetic difference"
+    },
+    {
+      "id": "S10",
+      "title": "Historical direct entry",
+      "case": "C",
+      "starting_point": "Level 2 Demo Day; Eligible MSL",
+      "action": "Read state",
+      "expected": "Level2 preserved; acceptance Unknown"
+    },
+    {
+      "id": "S11",
+      "title": "Streaming statement and payout",
+      "case": "C",
+      "starting_point": "C-E01/C-E02",
+      "action": "Review both APPROVED",
+      "expected": "₹80k earned / ₹70k received; difference unresolved"
+    },
+    {
+      "id": "S12",
+      "title": "Unresolved model gate",
+      "case": "A",
+      "starting_point": "Level Unknown, model unresolved",
+      "action": "Attempt standard advancement",
+      "expected": "Blocked"
+    },
+    {
+      "id": "S13",
+      "title": "Reviewer permissions",
+      "case": "A",
+      "starting_point": "A-E01 unreviewed",
+      "action": "Student attempts approval",
+      "expected": "Forbidden"
+    },
+    {
+      "id": "S14",
+      "title": "MSL handover independence",
+      "case": "B,C",
+      "starting_point": "Both imported Eligible for MSL",
+      "action": "Read state",
+      "expected": "Handover and acceptance Unknown"
+    }
+  ],
+  "qa_only_negative_probes": [
+    {
+      "id": "N01",
+      "title": "Incomplete update",
+      "case": "A",
+      "counterfactual_or_action": "Submit only venture_id",
+      "expected": "422"
+    },
+    {
+      "id": "N02",
+      "title": "Blank review reason",
+      "case": "A",
+      "counterfactual_or_action": "Approve A-E01 using blank reviewer/reason",
+      "expected": "422"
+    },
+    {
+      "id": "N03",
+      "title": "Blank direct-entry reason",
+      "case": "A",
+      "counterfactual_or_action": "Attempt Direct Entry with blank reason",
+      "expected": "422"
+    },
+    {
+      "id": "N04",
+      "title": "Cross-venture evidence ID reuse",
+      "case": "A/B",
+      "counterfactual_or_action": "Submit A update referencing B-E01",
+      "expected": "400 or 422"
+    },
+    {
+      "id": "N05",
+      "title": "Destructive incomplete import",
+      "case": "All",
+      "counterfactual_or_action": "Attempt import of only empty ventures list",
+      "expected": "400 or 422 and all three retained"
+    },
+    {
+      "id": "N06",
+      "title": "Week-gap counterfactual",
+      "case": "A",
+      "counterfactual_or_action": "QA-only replace second WAU with 12 but move sequence from 2 to 5",
+      "expected": "Must not MET"
+    },
+    {
+      "id": "N07",
+      "title": "Discovery count counterfactual",
+      "case": "A",
+      "counterfactual_or_action": "QA-only approve low numeric L0-Q3 subconditions",
+      "expected": "Must not MET"
+    },
+    {
+      "id": "N08",
+      "title": "Same receipt duplicated as observation",
+      "case": "B",
+      "counterfactual_or_action": "QA-only add duplicate B-E03 numeric observation",
+      "expected": "Exactly ₹60k collected"
+    }
+  ],
+  "restriction": "QA-only probes are not original venture traction and must never be imported into the demo seed or used as verified MSL/level evidence"
+}

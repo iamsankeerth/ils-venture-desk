@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-nav: #172b42;
+  --color-canvas: #f8fafc;
+  --color-brand: #0f766e;
+  --color-muted: #64748b;
+  --color-border-ui: #e2e8f0;
+  --color-pending: #d97706;
+  --color-danger-ui: #b91c1c;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: #172b42;
+  font-family: var(--font-sans);
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* Quiet micro-interactions: one motion language, 120–180ms, ease-out. */
+@keyframes ils-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes ils-slide-in-right {
+  from { opacity: 0.4; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes ils-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.anim-overlay { animation: ils-fade-in 150ms ease-out; }
+.anim-drawer { animation: ils-slide-in-right 180ms ease-out; }
+.anim-modal { animation: ils-rise 160ms ease-out; }
+.anim-row { animation: ils-fade-in 120ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
