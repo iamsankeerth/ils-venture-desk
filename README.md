@@ -1,6 +1,8 @@
 # ILS Venture Progress & Readiness Workflow
 
-**Live demo:** <https://ils-venture-desk.vercel.app/>
+**Live demo:** <https://ils-venture-desk.vercel.app/>  
+**Demo video:** <https://www.loom.com/share/3da814ebe2bb4620a10dc82c2759641e>  
+**Submission note:** [SUBMISSION_NOTE.pdf](./SUBMISSION_NOTE.pdf)
 
 Working prototype for the Mesa Idea Lab Sprint (ILS) Tech Associate assignment.
 
@@ -57,7 +59,19 @@ PYTHONPATH=. python audit_results/run_extended_audit.py
 
 Latest final verification: **131 backend/stage and 23 frontend browser tests** plus **124 extended audit cases**, **278/278 pass**. Browser evidence also includes 44 P1, 19 claim-boundary, 25 W01/W05 and 28 P2 checks. The 31 focused final-correction tests are included in the 131. The UI browser test uses an offline asset injection harness and real FastAPI TestClient; a standalone Node proxy was also checked by HTTP. The stage tests use explicitly QA-only counterfactuals; see `qa_stage_tests/STAGE_TEST_GUIDE.md`.
 
+## How to interact with updates
+
+1. **Choose the role.** Use the Role (Demo Seam) selector in the header. Submissions use `STUDENT_FOUNDER`; reviews, transitions and MSL certification use `PROGRAMME_REVIEWER`; model clarification and rule configuration use `PROGRAMME_OWNER`.
+2. **Submit an update as a founder.** Open **Ventures → Case A/B/C → Requirements**, choose the relevant criterion, and click **Submit Update**. Alternatively use the workspace Submit Update button on Overview. Select the business line and criterion, enter the summary metric and verbatim period, record the reported value or qualitative checklist, provide the evidence source type/ledger bucket/unit, and enter a blocker and next action.
+3. **Understand the saved state.** Submission creates an `UNREVIEWED` progress update and evidence record. It is a claim, not proof; it does not yet change the criterion result.
+4. **Review as a Programme Reviewer.** Open **Work Queue → Review Evidence**. Inspect the submitted measurements, enter a review reason, then choose **Approve Evidence** or **Request Changes**. Approval activates the observation and recomputes the criterion; requested changes do not count toward it.
+5. **Configure unresolved rules as a Programme Owner.** Open **Requirements → the configurable criterion → Configure Rule**. Invalid configurations are rejected and an unconfigured rule remains `BLOCKED`.
+6. **Record advancement as a Programme Reviewer.** Open **Decision History → Record Transition**. A standard advancement requires the applicable criteria to be met; direct entry records a justified placement and its criteria snapshot.
+7. **Use the Work Queue for follow-up.** It surfaces unreviewed evidence, model decisions, configuration gaps, mentor follow-ups and pending transition/handover items.
+
 ## Demo Walkthrough
+
+Recorded walkthrough: <https://www.loom.com/share/3da814ebe2bb4620a10dc82c2759641e>
 
 Use the **Role (Demo Seam)** selector in the header. Roles simulate `PROGRAMME_OWNER`, `PROGRAMME_REVIEWER`, `MENTOR`, and `STUDENT_FOUNDER` through the `X-ILS-Role` request header. This is a demonstration seam, not production authentication.
 

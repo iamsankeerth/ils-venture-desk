@@ -24,6 +24,7 @@ frontend/.impeccable/
 
 # Local planning, assignment and submission documents
 *.pdf
+!SUBMISSION_NOTE.pdf
 CHANGELOG_CORRECTNESS_FIXES.md
 DEMO_SCRIPT.md
 ILS_Complete_Guide_and_Plan.md
